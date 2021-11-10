@@ -38,7 +38,7 @@ int main()
 	CreateArr(a, n, 0);
 	PrintArr(a, n, 0);
 
-	cout << "Minimal absolute value in the array = " << Min(a, n, a[0], 1) << endl;
+	cout << "Minimal absolute value in the array = " << Min(a, n, abs(a[0]), 1) << endl;
 
 	numzero = SearchZero(a, n, 0);
 
@@ -84,10 +84,12 @@ void PrintArr(int *a, const int size, const int i)
 
 int Min(int *a, const int size, int min, const int i)
 {
-	if (abs(a[i]) < abs(min))
-		min = a[i];
 	if (i < size)
+	{
+		if (abs(a[i]) < abs(min))
+			min = abs(a[i]);
 		return Min(a, size, min, i + 1);
+	}
 	else
 		return min;
 }
